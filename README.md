@@ -1,6 +1,6 @@
 # k8s_OpenKruise_config
 
-之前做K8S的时候学的东西，最近要清电脑，删掉实在可惜，直接备份一下好了。同时可以在知乎查看 https://zhuanlan.zhihu.com/p/589008170/edit
+之前做K8S的时候学的东西，最近要清电脑，删掉实在可惜，直接备份一下好了。同时可以在知乎查看 https://zhuanlan.zhihu.com/p/589008170
 
 ## **OpenKruise介绍、部署及核心功能实验**
 
