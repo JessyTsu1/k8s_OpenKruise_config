@@ -1,0 +1,28 @@
+# 05-cloneset-updateStrategy-partition.yaml
+apiVersion: apps.kruise.io/v1alpha1
+kind: CloneSet
+metadata:
+  name: cs-demo
+  namespace: default
+spec:
+  minReadySeconds: 30 
+  updateStrategy:
+    type: InPlaceIfPossible  
+    partition: 2 #修改1：保留旧版本pod的数量
+  scaleStrategy:
+    maxUnavailable: 1  
+  replicas: 4
+  selector:
+    matchLabels:
+      app: cs
+  template:
+    metadata:
+      labels:
+        app: cs
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest #修改2：把镜像版本替换了
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80

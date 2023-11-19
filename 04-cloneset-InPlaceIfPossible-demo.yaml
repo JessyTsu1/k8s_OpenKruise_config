@@ -1,0 +1,27 @@
+# 04-cloneset-InPlaceIfPossible-demo.yaml
+apiVersion: apps.kruise.io/v1alpha1
+kind: CloneSet
+metadata:
+  name: cs-demo
+  namespace: default
+spec:
+  minReadySeconds: 30 
+  updateStrategy:
+    type: InPlaceIfPossible  #修改1：指定为最大限度的原地升级的方式
+  scaleStrategy:
+    maxUnavailable: 1  
+  replicas: 4
+  selector:
+    matchLabels:
+      app: cs
+  template:
+    metadata:
+      labels:
+        app: cs
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9 #修改2：把镜像版本替换了
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
